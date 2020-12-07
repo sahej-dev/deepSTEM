@@ -50,11 +50,9 @@ class Network:
 
 
     def process_batch(self, batch, lr, batch_size):
-        # print('Batch started')
         dho_w = [np.zeros(w.shape) for w in self.weights]
         dho_b = [np.zeros(b.shape) for b in self.biases]
 
-        # print(type(batch))
         i, j = batch
         for x, y in zip(i, j):
             delta_dho_w, delta_dho_b = self.backpropagation(x, y)
