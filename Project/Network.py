@@ -82,17 +82,17 @@ class Network:
             a_vals.append(a)
 
         delta = self.cost_wrt_aL(
-            a_vals[-1], y) * self.activation_prime(z_vals[-1])
+            a_vals[-1], y) * self.activation_prime(z_vals[-1]) #BP1
 
-        dho_b[-1] = delta
-        dho_w[-1] = np.dot(delta, a_vals[-2].transpose())
+        dho_b[-1] = delta #BP3
+        dho_w[-1] = np.dot(delta, a_vals[-2].transpose()) #BP4
 
         for l in range(2, self.layers):
             delta = np.dot(self.weights[-l+1].transpose(),
-                           delta) * self.activation_prime(z_vals[-l])
+                           delta) * self.activation_prime(z_vals[-l]) #BP2
 
-            dho_b[-l] = delta
-            dho_w[-l] = np.dot(delta, a_vals[-l-1].transpose())
+            dho_b[-l] = delta #BP3
+            dho_w[-l] = np.dot(delta, a_vals[-l-1].transpose()) #BP4
 
         return (dho_w, dho_b)
 

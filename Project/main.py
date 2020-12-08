@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-import Network
+import Project.Network
 
 def vector_out(i):
     v = np.zeros((10,1))
@@ -22,6 +22,6 @@ testX = [x / 255.0 for x in testX]
 # testY = [vector_out(x) for x in testY]
 test_data = (testX, testY)
 
-net = Network.Network([imgX*imgY, 30, 10])
+net = Project.Network.Network([imgX*imgY, 30, 10])
 net.sgd(train_data, epochs=30, batch_size=10, lr=3.0, test_dat=test_data)
 # print(net.evaluate(test_data))
